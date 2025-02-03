@@ -25,29 +25,25 @@
                     />
                 </svg>
 
-                All categories
+                Home
             </div>
         </button>
 
         <div class="mx-7 flex gap-8">
+            
             <a
                 class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="index.html"
-            >Home</a
-            >
-            <a
-                class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="catalog.html"
-            >Catalog</a
-            >
-            <a
-                class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="about-us.html"
+                href="about.php"
             >About Us</a
             >
             <a
                 class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="contact-us.html"
+                href="catalog.php"
+            >Catalog</a
+            >
+            <a
+                class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
+                href="contact.php"
             >Contact Us</a
             >
         </div>
