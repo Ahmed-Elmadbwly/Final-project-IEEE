@@ -38,16 +38,20 @@
         </div>
 
         <div class="ml-auto flex gap-4 px-5">
-            <a
-                class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="login.html">Login</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
+                    href="logout.php">Log Out</a>
+            <?php else: ?>
+                <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
+                    href="login.php">Login</a>
 
-            <span class="text-white">&#124;</span>
+                <span class="text-white">&#124;</span>
 
-            <a
-                class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
-                href="sign-up.html">Sign Up</a>
+                <a class="font-light text-white duration-100 hover:text-yellow-400 hover:underline"
+                    href="register.php">Sign Up</a>
+            <?php endif; ?>
         </div>
+
     </div>
 </nav>
 <!-- /Nav bar -->
