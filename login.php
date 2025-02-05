@@ -3,11 +3,6 @@
 include 'layouts/header.php'; ?>
 
 
-
-
-
-
-
 <!-- Menu  -->
 <section
     x-show="desktopMenuOpen"

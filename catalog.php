@@ -1,16 +1,8 @@
 <?php
 include 'classes/connection.php';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
     $stmt = $pdo->query("SELECT name, image, price, discount_price, discount_percentage, rating, reviews FROM products");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
-
 
 include 'layouts/header.php'; ?>
 
