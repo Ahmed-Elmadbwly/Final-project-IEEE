@@ -245,18 +245,18 @@ include 'layouts/header.php'; ?>
             <button class="my-5 w-full bg-violet-900 py-2 text-white" name="submit" type="submit">
                 CREATE ACCOUNT
             </button>
+            
+            
+            <div class="mt-4 flex justify-between">
+                <div class="flex gap-2">
+                    <input type="checkbox" name="agree" />
+                    <label for="checkbox">
+                        I have read and agree with
+                        <a href="#" class="text-violet-900">terms &amp; conditions</a>
+                    </label>
+                </div>
+            </div>
         </form>
-
-
-        <div class="mt-4 flex justify-between">
-            <form class="flex gap-2">
-                <input type="checkbox" />
-                <label for="checkbox">
-                    I have read and agree with
-                    <a href="#" class="text-violet-900">terms &amp; conditions</a>
-                </label>
-            </form>
-        </div>
 
 
 

@@ -271,7 +271,7 @@ include 'layouts/header.php'; ?>
 
         <p class="text-center">
             Don`t have account?
-            <a href="sign-up.html" class="text-violet-900">Register now</a>
+            <a href="register.php" class="text-violet-900">Register now</a>
         </p>
     </div>
 </section>
