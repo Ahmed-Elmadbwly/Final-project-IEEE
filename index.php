@@ -1,4 +1,8 @@
-<?php
+<?php 
+require 'vendor/autoload.php';
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 include 'classes/connection.php';
 include 'layouts/header.php';
 
