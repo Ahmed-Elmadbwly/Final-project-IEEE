@@ -1,6 +1,74 @@
 <?php
-include 'classes/connection.php';
-include 'layouts/header.php'; ?>
+include 'connection_mysqli.php';
+include 'layouts/header.php'; 
+$name=$email=$message=$special="";
+$nameErr=$emailErr=$catogaryErr=$messageErr=$checkboxErr="";
+$catogary="";
+    if(isset($_POST["submit"])){
+        if(empty($_POST["name"])){
+            $nameErr = "Name is required";
+        }
+        else{
+            $name=test_input($_POST["name"]);
+                if(!preg_match("/^[a-zA-Z-0-9-' ]*$/",$name)){
+                    $nameErr = "Only letters and white space allowed";
+                }
+        }
+
+            if(empty($_POST["email"])){
+                $emailErr = "Email is required";
+            }
+            else{
+                $email=test_input($_POST["email"]);
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $emailErr = "Invalid email format";
+                    }
+            }
+
+            if($_POST["pets"]==""){
+                $catogaryErr="Please choose one of them";
+            }
+            else{
+                $catogary=$_POST["pets"];
+            }
+
+            if($_POST["message"]==""){
+                $messageErr="This field is required!";
+            }
+            else{
+                $message=$_POST["message"];
+            }
+
+            if(empty($_POST["checkbox"])){
+                $checkboxErr="You should read and agree with terms & conditions";
+            }
+
+            if($nameErr==""&&$emailErr==""&&$catogaryErr==""&&$messageErr==""&&$checkboxErr==""){
+            $sql="INSERT INTO contact (name,email,catogary,comment) VALUES ('$name','$email','$catogary','$message')";
+            $result= mysqli_query($conn,$sql);
+                if ($result) {
+                    $special= "Your Message created successfully";
+                    $name=$email=$message="";
+                    $nameErr=$emailErr=$catogaryErr=$messageErr="";
+                    $catogary="Please choose catogary";
+                } 
+
+                else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+        }
+                    
+        }
+
+    function test_input($data){
+        $data = trim($data);
+        $data = htmlspecialchars($data);
+        $data = stripslashes($data);
+        return $data;
+    }
+    
+
+?>
 
 
 <!-- Menu  -->
@@ -402,51 +470,65 @@ include 'layouts/header.php'; ?>
 
     <!-- Form  -->
 
-    <form class="mx-auto my-5 max-w-[600px] px-5 pb-10" action="">
+    <form class="mx-auto my-5 max-w-[600px] px-5 pb-10" action="contact.php" method="POST">
         <div class="mx-auto">
-            <div class="my-3 flex w-full gap-2">
+            <div class="flex flex-col w-full">
                 <input
-                    class="w-1/2 border px-4 py-2"
-                    type="email"
-                    placeholder="E-mail" />
-                <input
-                    class="w-1/2 border px-4 py-2"
+                    class=" border px-4 py-2 mb-2"
                     type="text"
-                    placeholder="Full Name" />
+                    name="name"
+                    value="<?php echo $name ?>"
+                    placeholder="Full Name" /> 
+             <span class="text-red-500 block mb-2"><?php echo $nameErr ?></span>
+                <input
+                    class=" border px-4 py-2 mb-2"
+                    type="email"
+                    name="email"
+                    value="<?php echo $email ?>"
+                    placeholder="E-mail" /> 
+             <span class="text-red-500 block mb-2"><?php echo $emailErr ?></span>
             </div>
         </div>
 
         <select
             class="mb-3 w-full border px-4 py-2"
             name="pets"
-            id="pet-select">
-            <option value="">Please choose a category</option>
+            id="pet-select"
+            >
+            <option value="">Please choose catogary</option>
             <option value="delivery">Delivery</option>
             <option value="support">Support</option>
             <option value="profile">Profile</option>
             <option value="careers">Careers</option>
             <option value="another">Another category</option>
         </select>
-
+         <span class=" text-red-500 block mb-2 "><?php echo $catogaryErr ?></span>
         <textarea
             class="w-full border px-4 py-2"
             placeholder="Write a commentary..."
-            name=""
-            id=""></textarea>
-
+            name="message"
+            id="message"
+            ><?php echo $message ?></textarea>
+         <span class=" text-red-500 block mb-2 "><?php echo $messageErr ?></span>
         <div
             class="lg:items:center container mt-4 flex flex-col justify-between lg:flex-row">
-            <div class="flex items-center">
-                <input class="mr-3" type="checkbox" />
-                <label for="checkbox">
-                    I have read and agree with
-                    <a href="#" class="text-violet-900">terms &amp; conditions</a>
-                </label>
+            <div class="flex flex-col items-center">
+                <div>
+                    <input class="mr-3"  type="checkbox" id="checkbox" name="checkbox" />
+                    <label for="checkbox">
+                        I have read and agree with
+                        <a href="#" class="text-violet-900">terms &amp; conditions</a>
+                    </label>
+                </div>
+                <div>
+                    <span class=" text-red-500 block my-2 "><?php echo $checkboxErr ?></span>
+                </div>
             </div>
-            <button class="my-3 bg-amber-400 px-4 py-2 lg:my-0">
+            <button class="my-3 bg-amber-400 px-4 py-2 lg:my-0" type="submit" name="submit">
                 Send Message
             </button>
         </div>
+        <span class=" bg-black text-green-500 block mt-5  text-center "><?php echo $special ?></span>
     </form>
 
     <!-- /Form  -->
