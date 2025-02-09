@@ -1,4 +1,5 @@
-<?php
+<?php 
+require 'config.php';
 include 'classes/connection.php';
 include 'layouts/header.php';
 

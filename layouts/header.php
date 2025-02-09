@@ -27,7 +27,7 @@
         <a href="index.php">
             <img
                 class="cursor-pointer sm:h-auto sm:w-auto"
-                src="../assets/images/company-logo.svg"
+                src="./assets/images/company-logo.svg"
                 alt="company logo" />
         </a>
 

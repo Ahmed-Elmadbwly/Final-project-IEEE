@@ -4,7 +4,7 @@
     <div class="ml-5">
         <img
             class="mt-10 mb-5"
-            src="../assets/images/company-logo.svg"
+            src="./assets/images/company-logo.svg"
             alt="company logo"
         />
         <p class="pl-0">
@@ -15,21 +15,21 @@
             <a href="https://github.com/bbulakh">
                 <img
                     class="h-5 w-5 cursor-pointer"
-                    src="../assets/images/github.svg"
+                    src="./assets/images/github.svg"
                     alt="github icon"
                 />
             </a>
             <a href="https://t.me/b_bulakh">
                 <img
                     class="h-5 w-5 cursor-pointer"
-                    src="../assets/images/telegram.svg"
+                    src="./assets/images/telegram.svg"
                     alt="telegram icon"
                 />
             </a>
             <a href="https://www.linkedin.com/in/bogdan-bulakh-393284190/">
                 <img
                     class="h-5 w-5 cursor-pointer"
-                    src="../assets/images/linkedin.svg"
+                    src="./assets/images/linkedin.svg"
                     alt="twitter icon"
                 />
             </a>
@@ -107,6 +107,6 @@
     </div>
 </section>
 <!-- /Payment and copyright  -->
-<script type="module" src="../assets/js/script.js"></script>
+<script type="module" src="./assets/js/script.js"></script>
 </body>
 </html>
