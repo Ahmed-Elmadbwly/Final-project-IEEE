@@ -1,6 +1,8 @@
 <?php
+require_once 'config.php';
+include 'layouts/header.php';
 
-include 'layouts/header.php'; ?>
+?>
 
 <!-- Menu  -->
 <section
@@ -249,7 +251,7 @@ include 'layouts/header.php'; ?>
             
             <div class="mt-4 flex justify-between">
                 <div class="flex gap-2">
-                    <input type="checkbox" name="agree" />
+                    <input type="checkbox" name="agree" required />
                     <label for="checkbox">
                         I have read and agree with
                         <a href="#" class="text-violet-900">terms &amp; conditions</a>

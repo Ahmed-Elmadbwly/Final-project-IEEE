@@ -1,5 +1,6 @@
 <?php
 session_start();
+require '../config.php';
 include '../classes/connection.php'; // Ensure database connection is properly established
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {

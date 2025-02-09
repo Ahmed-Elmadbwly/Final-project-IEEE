@@ -1,13 +1,14 @@
 <?php
 session_start();
+require_once '../config.php';
 include '../classes/connection.php'; // Database connection file
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Data sanitization
     $name  = trim(htmlspecialchars($_POST['name']));
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $pass  = $_POST['password'];
     $cpass = $_POST['cpassword'];
+    $agree = $_POST['agree'];
 
     // Array to store errors
     $errors = [];
@@ -30,6 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check password length
     if (strlen($pass) < 6) {
         $errors[] = "Password must be at least 6 characters !";
+    }
+
+    if ($agree !== "on") {
+        $errors[] = "You must agree to the terms and conditions !";
     }
 
     // Check if email already exists in the database
